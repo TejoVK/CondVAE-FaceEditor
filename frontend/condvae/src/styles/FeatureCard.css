@@ -1,0 +1,99 @@
+/* Flex container for the feature cards */
+.feature-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Flex container for wrapping cards */
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 100%;
+  padding: 1rem;
+  position: relative; /* Ensure this creates a stacking context */
+  z-index: 0; /* Default z-index */
+}
+
+/* Individual feature cards */
+.feature-card {
+  flex: 1 1 300px;
+  max-width: 400px;
+  min-width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  z-index: 0; /* Default z-index */
+}
+
+/* Hover effect for the feature cards */
+.feature-card:hover {
+  background-color: #8A70D6;
+  color: #ffffff;
+  transform: scale(1.05); /* Slight zoom */
+  z-index: 10; /* Bring the card to the front when hovered */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Thumbnail image within the card */
+.thumbnail-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  height: auto;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for the thumbnail image */
+.thumbnail-image:hover {
+  transform: scale(1.25);
+}
+
+/* Text within the feature card */
+.feature-card .font-bold,
+.feature-card .text-gray-700 {
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover .font-bold,
+.feature-card:hover .text-gray-700 {
+  color: #ffffff;
+}
+
+/* Combined bounce and zoom out animation */
+@keyframes zoomBounce {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.05) translateY(-10px);
+  }
+}
+
+/* Add this CSS to your existing styles */
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem; /* Space between cards */
+  max-width: 100%;
+  padding: 1rem;
+  overflow: hidden; /* Prevent overflow that causes scrolling */
+  position: relative; /* Ensure the container manages its z-index context */
+}
+
+/* Adjust the hover effect so that the cards grow only slightly */
+.feature-card:hover {
+  transform: scale(1.02); /* Slightly enlarge the card */
+  z-index: 1; /* Ensure the hovered card stays above others */
+}
