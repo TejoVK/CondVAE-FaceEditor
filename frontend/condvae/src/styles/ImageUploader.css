@@ -1,0 +1,150 @@
+/* Container wrapper for centering content */
+.image-upload-container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgb(164, 45, 228) 0%, rgb(59, 124, 221) 100%);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Main container for the form and images */
+.image-upload-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 1000px; /* Adjusted for better responsiveness */
+  width: 100%;
+}
+
+/* Title styling */
+.image-upload-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Form styling */
+.image-upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* File input styling */
+.image-upload-input-file {
+  background: transparent;
+  color: #fff;
+  font-size: 1em;
+  margin-bottom: 20px;
+  border: 2px dashed #fff;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+/* Hover effect for file input */
+.image-upload-input-file:hover {
+  border-color: #ff7e5f;
+}
+
+/* Text input styling */
+.image-upload-input-text {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 1em;
+}
+
+/* Placeholder styling */
+.image-upload-input-text::placeholder {
+  color: #ddd;
+}
+
+/* Button styling */
+.image-upload-button {
+  background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+  border: none;
+  border-radius: 50px;
+  padding: 12px 25px;
+  font-size: 1em;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for button */
+.image-upload-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled button styling */
+.image-upload-button:disabled {
+  background: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+/* Error message styling */
+.image-upload-error {
+  font-size: 1em;
+  margin-top: 20px;
+  color: #ff6b6b;
+}
+
+/* Container for images */
+.image-upload-images {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Ensure images are centered */
+  gap: 20px;
+  margin-top: 20px;
+  flex-direction: row; /* Start with side-by-side layout */
+}
+
+/* Wrapper for each image */
+.image-upload-image-wrapper {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2); /* Light background for images */
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+.image-upload-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  background-color: #fff; /* Ensuring images are not transparent */
+}
+
+/* Hover effect for images */
+.image-upload-image:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .image-upload-images {
+    flex-direction: column; /* Stack images vertically on small screens */
+    gap: 15px; /* Adjust gap for vertical layout */
+    align-items: center; /* Ensure images stay centered vertically */
+  }
+
+  .image-upload-image-wrapper {
+    width: 100%;
+    max-width: 100%; /* Ensure images take up full width in vertical layout */
+  }
+}
