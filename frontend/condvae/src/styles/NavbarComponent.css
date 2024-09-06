@@ -1,71 +1,101 @@
 /* NavbarComponent.css */
 
+/* General body padding to account for fixed navbar */
+body {
+  margin: 0;
+  padding-top: 80px; /* Adjust based on the height of your navbar */
+}
+
+/* Navbar styling */
 .custom-navbar {
-  background-color: #24252A; /* Dark background color */
-  padding: 15px 30px; /* Adjust padding for better spacing */
-  border-bottom-left-radius: 20px; /* Rounded bottom-left corner */
-  border-bottom-right-radius: 20px; /* Rounded bottom-right corner */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: adds shadow for depth */
+  background-color: #1f1f1f;
+  padding: 20px 40px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-.navbar-logo {
-  height: 40px; /* Adjust height for logo */
-  margin-right: 10px; /* Space between logo and text */
+.navbar-visible {
+  transform: translateY(0);
 }
 
-.navbar-brand, .nav-link {
-  color: #edf0f1; /* Ensure text color is white initially */
+.navbar-hidden {
+  transform: translateY(-100%);
 }
 
-.nav-link {
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover, .nav-link.active-link {
-  color: #0088a9; /* Accent color for active and hover states */
-}
-
-.navbar-brand strong {
-  color: #edf0f1; /* Consistent text color for the brand name */
-}
-
-.navbar-toggle {
-  border: none; /* Remove default border */
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;base64,..."); /* Customize hamburger icon if needed */
-}
-
-
-.custom-navbar {
-  background-color: #24252A;
-  padding: 15px 30px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: adds shadow */
-}
-
+/* Navbar Logo Container */
 .navbar-logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff; /* White background */
-  border-radius: 50%; /* Makes the container circular */
-  width: 60px; /* Width and height should be equal */
-  height: 60px; /* Height and width should be equal for a perfect circle */
-  padding: 5px; /* Adjusts the padding around the logo */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds shadow for better visibility */
-  overflow: hidden; /* Hide any overflow */
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
-.flex-container {
+
+.navbar-logo {
+  height: 100%;
+  width: auto;
+}
+
+.navbar-brand strong {
+  color: #edf0f1;
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+.navbar-brand {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem; /* Space between cards */
-  max-width: 100%;
-  padding: 1rem;
-  overflow: hidden; /* Prevent overflow that causes scrolling */
-  position: relative; /* Ensure the container manages its z-index context */
+  align-items: center;
+}
+
+.navbar-brand strong:hover {
+  color: #0088a9;
+}
+
+.nav-link {
+  color: #edf0f1;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  margin-left: 1.5rem;
+}
+
+.nav-link:hover, .nav-link.active-link {
+  color: #00bcd4;
+  border-bottom: 2px solid #00bcd4;
+  padding-bottom: 4px;
+}
+
+/* Style for the navbar toggler button */
+.navbar-toggler {
+  border: none; /* Remove default border */
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMTIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjY3VydmU9InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3BhdGg+Cjwvc3ZnPgo='); /* White hamburger icon */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .nav-link {
+    margin-left: 1rem;
+  }
+
+  .navbar-brand strong {
+    font-size: 1.25rem;
+  }
 }

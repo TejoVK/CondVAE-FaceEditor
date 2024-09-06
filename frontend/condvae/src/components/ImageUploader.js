@@ -1,75 +1,13 @@
 import '../styles/ImageUploader.css'; // Import the CSS file
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-// const ImageUpload = () => {
-//   const [image, setImage] = useState(null);
-//   const [conditions, setConditions] = useState([1, 0, 1, 1, 1, 0, 1, 0, 1, 0]); // Example conditions
-//   const [loading, setLoading] = useState(false);
-//   const [resultImage, setResultImage] = useState(null);
-//   const [error, setError] = useState(null);
-
-//   const handleImageChange = (e) => {
-//     setImage(e.target.files[0]);
-//   };
-
-//   const handleConditionsChange = (e) => {
-//     setConditions(e.target.value.split(',').map(Number)); // Example: "1,0,1,1,1,0,1,0,1,0"
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     setError(null);
-//     setResultImage(null);
-
-//     const formData = new FormData();
-//     formData.append('image', image);
-//     formData.append('conditions', JSON.stringify(conditions));
-
-//     try {
-//       const response = await axios.post('http://127.0.0.1:5000/process', formData, {
-//         headers: {
-//           'Content-Type': 'multipart/form-data'
-//         }
-//       });
-
-//       if (response.status === 200) {
-//         const { reconstructed_image } = response.data;
-//         setResultImage(`data:image/png;base64,${reconstructed_image}`);
-//       } else {
-//         setError('Error processing the image');
-//       }
-//     } catch (err) {
-//       setError(`Error: ${err.message}`);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="containerrr">
-//       <h1>Image Upload and Processing</h1>
-//       <form onSubmit={handleSubmit} className="form">
-//         <input type="file" accept="image/*" onChange={handleImageChange} required className="input-file" />
-//         <input type="text" value={conditions.join(',')} onChange={handleConditionsChange} placeholder="Enter conditions separated by commas" required className="input-text" />
-//         <button type="submit" disabled={loading} className="submit-button">
-//           {loading ? 'Processing...' : 'Upload Image'}
-//         </button>
-//       </form>
-//       {error && <p className="error-message">{error}</p>}
-//       {resultImage && <img src={resultImage} alt="Reconstructed" className="result-image" />}
-//     </div>
-//   );
-// };
-
-// export default ImageUpload;
 import React, { useState } from 'react';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form'; // Import Bootstrap Form for Switches
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is loaded
+import NavbarComponent from './NavbarComponent';
 
 const ImageUpload = () => {
+  const [conditions, setConditions] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [image, setImage] = useState(null);
-  const [conditions, setConditions] = useState([1, 0, 1, 1, 1, 0, 1, 0, 1, 0]); // Example conditions
   const [loading, setLoading] = useState(false);
   const [resultImage, setResultImage] = useState(null);
   const [error, setError] = useState(null);
@@ -78,8 +16,10 @@ const ImageUpload = () => {
     setImage(e.target.files[0]);
   };
 
-  const handleConditionsChange = (e) => {
-    setConditions(e.target.value.split(',').map(Number)); // Example: "1,0,1,1,1,0,1,0,1,0"
+  const handleSwitchChange = (index) => {
+    const updatedConditions = [...conditions];
+    updatedConditions[index] = updatedConditions[index] === 1 ? 0 : 1;
+    setConditions(updatedConditions);
   };
 
   const handleSubmit = async (e) => {
@@ -93,10 +33,10 @@ const ImageUpload = () => {
     formData.append('conditions', JSON.stringify(conditions));
 
     try {
-      const response = await axios.post('http://localhost:5000/process', formData, {
+      const response = await axios.post('https://tejovk311-cvae-face-editor.hf.space/create', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
       if (response.status === 200) {
@@ -112,32 +52,80 @@ const ImageUpload = () => {
     }
   };
 
+  // Example labels for facial features (modify as needed)
+  const featureLabels = ['Attractive', 'Make Bald', 'Smiling', 'Apply Lipstick', 'Make Young', 'Add Eyeglasses', 'Apply Makeup', 'Add Mustache', 'Remove Facial Hair', 'Receding Hairline'];
+
   return (
+    <>
+    <NavbarComponent/>
     <div className="image-upload-container-wrapper">
       <div className="image-upload-container">
         <h1 className="image-upload-title">Image Upload & Reconstruction</h1>
         <form onSubmit={handleSubmit} className="image-upload-form">
-          <input type="file" accept="image/*" onChange={handleImageChange} required className="image-upload-input-file"/>
-          <input type="text" value={conditions.join(',')} onChange={handleConditionsChange} placeholder="Enter conditions separated by commas" required className="image-upload-input-text"/>
-          <button type="submit" disabled={loading} className="image-upload-button">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            required
+            className="image-upload-input-file"
+          />
+
+          {/* Switches for toggling facial features */}
+          <div className="image-upload-switches">
+            <div className="container">
+              <div className="row">
+                {featureLabels.map((label, index) => (
+                  <div key={index} className="col-6 col-md-4 col-lg-3 mb-3">
+                    <Form.Check
+                      type="switch"
+                      id={`feature-switch-${index}`}
+                      label={label}
+                      checked={conditions[index] === 1}
+                      onChange={() => handleSwitchChange(index)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="image-upload-button"
+          >
             {loading ? 'Processing...' : 'Upload Image'}
           </button>
         </form>
+
         {error && <p className="image-upload-error">{error}</p>}
+
+        {/* Display original and reconstructed images */}
         {image && resultImage && (
           <div className="image-upload-images">
             <div className="image-upload-image-wrapper">
               <h3>Original Image</h3>
-              <img src={URL.createObjectURL(image)} alt="Original" className="image-upload-image"/>
+              <br />
+              <img
+                src={URL.createObjectURL(image)}
+                alt="Original"
+                className="image-upload-image"
+              />
             </div>
             <div className="image-upload-image-wrapper">
               <h3>Reconstructed Image</h3>
-              <img src={resultImage} alt="Reconstructed" className="image-upload-image"/>
+              <br />
+              <img
+                src={resultImage}
+                alt="Reconstructed"
+                className="image-upload-image"
+              />
             </div>
           </div>
         )}
       </div>
     </div>
+    </>
   );
 };
 
