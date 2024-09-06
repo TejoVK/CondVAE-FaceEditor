@@ -4,8 +4,11 @@ import Home from './pages/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ImageUploader from './components/ImageUploader.js'
 import CVAEArchitecture from './components/CVAEArchitecture.js';
+import WarningBanner from './components/WarningBanner.js';
 function App() {
   return (
+    <>
+    <WarningBanner/>
     <Router>
       <Routes>
         <Route path="/reconstruct" element={<ImageUploader />} />
@@ -16,6 +19,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </>
   );
 }
 
