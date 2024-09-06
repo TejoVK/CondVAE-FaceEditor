@@ -26,7 +26,7 @@ The project consists of two parts:
 ### Live Demo
 
 - **Frontend**: [cond-vae-face-editor on Vercel](https://cond-vae-face-editor-cvyv.vercel.app/)
-- **Backend**: Hosted on Hugging Face Spaces.
+- **Backend**: Hosted on Hugging Face Spaces. [tejovk311/cvae_face_editor](https://huggingface.co/spaces/tejovk311/cvae_face_editor/tree/main)
 
 ### Model Architecture
 
