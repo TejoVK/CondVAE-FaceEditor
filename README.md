@@ -1,4 +1,4 @@
-# CVAE Face Editor Project
+# CVAE Face Editor Project [Vercel app](https://cond-vae-face-editor-cvyv.vercel.app/)
 
 This project implements a **Conditional Variational Autoencoder (CVAE)** using the **CelebA dataset** to create a face editor. The project includes both a frontend (deployed on Vercel) and a backend (deployed on Hugging Face Spaces).
 
