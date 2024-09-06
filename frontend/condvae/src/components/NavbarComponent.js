@@ -59,7 +59,7 @@ function NavbarComponent() {
               Architecture
             </Nav.Link>
             <Nav.Link 
-              href="https://github.com/TejoVK" 
+              href="https://github.com/TejoVK/CondVAE-FaceEditor" 
               className={activeLink === 'https://github.com/TejoVK' ? 'nav-link active-link' : 'nav-link'} 
               onClick={() => handleClick('https://github.com/TejoVK')}
             >
