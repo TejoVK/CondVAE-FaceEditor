@@ -26,10 +26,11 @@ function NavbarComponent() {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
+  
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <Navbar expand="lg" className={`custom-navbar ${showNavbar ? 'navbar-visible' : 'navbar-hidden'}`}>

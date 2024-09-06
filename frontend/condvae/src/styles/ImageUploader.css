@@ -207,3 +207,17 @@
 .form-check-input:checked::before {
   background-color: rgb(119, 99, 194);
 }
+
+@media (max-width: 991px) {
+  .navbar {
+    padding: 0px;
+  }
+
+  .nav-link {
+    margin-left: 1rem;
+  }
+
+  .navbar-brand strong {
+    font-size: 1.25rem;
+  }
+}
