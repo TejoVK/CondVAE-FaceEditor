@@ -16,19 +16,19 @@ function Home() {
         <div className="flex-container flex overflow-x-auto space-x-6 mt-12 pb-4 text-center relative z-0">
           <FeatureCard 
             title="Swap Face Gender" 
-            description="This is the description for Feature One." 
+            description="Change facial features to swap gender." 
             mainImage="assets/gender_original.png" 
             thumbnailImage="assets/gender_reconstructed.png"
           />
           <FeatureCard 
             title="Remove Facial Hair" 
-            description="This is the description for Feature Two." 
+            description="Remove facial hair for a smooth look." 
             mainImage="assets/beard_original.png" 
             thumbnailImage="assets/beard_reconstructed.png"
           />
           <FeatureCard 
             title="Make Bald" 
-            description="This is the description for Feature Three." 
+            description="Get a bald look by removing all hair." 
             mainImage="assets/bald_original.png" 
             thumbnailImage="assets/bald_reconstructed.png"
           />
@@ -37,19 +37,19 @@ function Home() {
         <div className="flex-container flex overflow-x-auto space-x-6 mt-12 pb-4 text-center relative z-0">
           <FeatureCard 
             title="Add lipstick" 
-            description="This is the description for Feature Two." 
+            description="Apply lipstick to enhance lip color." 
             mainImage="assets/lipstick_original.png" 
             thumbnailImage="assets/lipstick_reconstructed.png"
           />
           <FeatureCard 
             title="Add Spectacles" 
-            description="This is the description for Feature Two." 
+            description="Add glasses to complement the face." 
             mainImage="assets/Spectacles_original.png" 
             thumbnailImage="assets/Spectacles_reconstructed.png"
           />
           <FeatureCard 
             title="Make Young" 
-            description="This is the description for Feature Three." 
+            description="Rejuvenate the face for a youthful look." 
             mainImage="assets/young_original.png" 
             thumbnailImage="assets/young_reconstructed.png"
           />
@@ -58,7 +58,7 @@ function Home() {
         <div className="flex-container flex overflow-x-auto space-x-6 mt-12 pb-4 text-center relative z-0">
           <FeatureCard 
             title="Add Makeup" 
-            description="This is the description for Feature One." 
+            description="Apply makeup to enhance facial features." 
             mainImage="assets/makeup_original.png" 
             thumbnailImage="assets/makeup_reconstructed.png"
           />
